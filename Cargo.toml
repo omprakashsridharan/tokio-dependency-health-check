@@ -1,0 +1,30 @@
+[package]
+name = "tokio-dependency-health-check"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "tokio_dependency_health_check"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tokio_dependency_health_check"
+path = "src/bin.rs"
+
+[dependencies]
+async-trait = "0.1.57"
+futures = "0.3.24"
+tokio = { version = "1.21.2", features = ["full"] }
+
+[dev-dependencies]
+tokio = { version = "1.21.2", features = ["full"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+
+[profile.dev]
+split-debuginfo = "unpacked"
